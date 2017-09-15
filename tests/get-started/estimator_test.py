@@ -7,7 +7,7 @@ feature_columns = [tf.feature_column.numeric_column("x", shape=[1])]
 # An estimator is the front end to invoke training (fitting) and evalutaion 
 # (interence). There are many predefined types like linear regression, linear 
 # classfication, and many neural network classifiers and regressors.
-estimator = tf.estimator.LinearRegressor(feature_columns=feature_columns, model_dir="./model_directory")
+estimator = tf.estimator.LinearRegressor(feature_columns=feature_columns, model_dir="./get-started/model_directory")
 
 # Tensorflow provides many helprt methods to read and set up data sets.
 # Here we use two data sets: one for training and one for evaluation
@@ -20,9 +20,9 @@ y_eval = np.array([-1.01, -4.1, -7, 0.])
 input_fn = tf.estimator.inputs.numpy_input_fn(
     {"x": x_train}, y_train, batch_size=4, num_epochs=None, shuffle=True)
 train_input_fn = tf.estimator.inputs.numpy_input_fn(
-    {"x": x_train}, y_train, batch_size=4, num_epochs=1, shuffle=False)
+    {"x": x_train}, y_train, batch_size=4, num_epochs=1000, shuffle=False)
 eval_input_fn = tf.estimator.inputs.numpy_input_fn(
-    {"x": x_eval}, y_train, batch_size=4, num_epochs=1000, shuffle=False)
+    {"x": x_eval}, y_eval, batch_size=4, num_epochs=1000, shuffle=False)
 
 # We can invoke 1000 training steps by invoking the method and passing the 
 # training data set.
